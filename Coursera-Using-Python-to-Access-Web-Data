@@ -1,0 +1,14 @@
+# Regular expression assignment 
+# Python for everybody Course 3 week 2 Final assignment
+
+import re
+# Open file
+x = open("regex_sum_296365.txt")
+total = 0
+# iterate over the file and find the numeric value
+for number in x: 
+    y = re.findall('[0-9]+', number)
+    # Iterate over the list and sum it up
+    for val in y:
+        total = total + int(val)
+print(total)
