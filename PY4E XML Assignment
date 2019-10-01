@@ -1,0 +1,18 @@
+import urllib.request, urllib.parse, urllib.error
+import xml.etree.ElementTree as ET
+
+serviceurl = 'http://py4e-data.dr-chuck.net/comments_296369.xml'
+# Open url
+url = urllib.request.urlopen(serviceurl) 
+# Read and decode url and store in data
+data = url.read().decode() # print (data)
+tree = ET.fromstring(data) 
+total = 0
+lst = tree.findall('comments/comment')
+# Iterate through the tree
+for count in lst:
+    # print('Name: ', count.find('name').text, 'Counts: ', count.find('count').text)
+    if count.find('count').text != 0:
+        # Sum up all the count
+        total = int(count.find('count').text) + total 
+print (total)
